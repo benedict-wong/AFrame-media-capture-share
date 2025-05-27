@@ -1,0 +1,46 @@
+{
+  "name": "html-screenshot-share",
+  "version": "1.0.0",
+  "description": "This repo contains a component leveraging HTML2Canvas and the Media Share API to take a screenshot and share it, with options for watermarks",
+  "main": "screenshot-share.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack serve --config webpack.config.js",
+    "prod": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benedict-wong/html-screenshot-share.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benedict-wong/html-screenshot-share/issues"
+  },
+  "homepage": "https://github.com/benedict-wong/html-screenshot-share#readme",
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "file-loader": "^6.2.0",
+    "gltf-loader": "^1.0.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "sass": "^1.89.0",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  },
+  "dependencies": {
+    "@ffmpeg/core": "^0.12.10",
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.2",
+    "ejs-loader": "^0.5.0",
+    "html2canvas": "^1.4.1",
+    "mime": "^4.0.7"
+  }
+}

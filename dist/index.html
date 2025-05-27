@@ -1,0 +1,15 @@
+module.exports = function(obj) {
+obj || (obj = {});
+var __t, __p = '';
+with (obj) {
+__p += '<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n  ' +
+((__t = ( require('./head.html')
+    )) == null ? '' : __t) +
+'\r\n<script defer src="bundle.js"></script></head>\r\n\r\n<body>\r\n  ' +
+((__t = ( require('./body.html')
+    )) == null ? '' : __t) +
+'\r\n</body>\r\n\r\n</html>';
+
+}
+return __p
+}
