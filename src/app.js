@@ -1,6 +1,7 @@
 import * as guiHTML from './screens/gui.html'
 
 import './styles/main.scss'
+import './styles/share.scss'
 
 import { ScreenshotShare } from './components/screenshot-share'
 import { VideoWatermarkShare } from './components/video-share'
