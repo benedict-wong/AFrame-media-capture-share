@@ -14,12 +14,15 @@ export const VideoWatermarkShare = {
 
   init() {
     const shareCTA = document.querySelector(this.data.selector);
-    this.recordButton
+    this.recordButton = null;
+    this.recordingTimeout
     if (!this.data.mediaButton) {
       // create a record button if not provided
-      this.recordButton = document.createElement('button');
+      this.recordButton = document.createElement('div');
+      this.recordButton.id = 'snapshot-container'
+      this.recordButton.classList.add('cantap')
       this.recordButton.textContent = 'Hold to Record';
-      document.body.appendChild(this.recordButton);
+      document.getElementById('body-content').appendChild(this.recordButton);
     } else {
       // use the provided media button
       this.recordButton = document.querySelector(this.data.mediaButton);
@@ -30,6 +33,7 @@ export const VideoWatermarkShare = {
 
     // Set up video recording
     const setupRecording = async () => {
+      console.log('Setting up video recording...');
       const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
       mediaRecorder = new MediaRecorder(stream);
 
@@ -48,9 +52,17 @@ export const VideoWatermarkShare = {
     };
 
     // Start recording when the button is pressed
-    this.recordButton.addEventListener('mousedown', () => {
+    this.recordButton.addEventListener('touchstart', () => {
+      if (!mediaRecorder) {
+        console.error('MediaRecorder is not initialized. Please wait for setup.');
+        return;
+      }
       recordedChunks = [];
-      mediaRecorder.start();
+      this.recordingTimeout = setTimeout(() => {
+        mediaRecorder.start();
+        console.log('Recording started...');
+      }, 1000); // Start recording after 1 second delay to avoid accidental clicks
+      
       setTimeout(() => {
         if (mediaRecorder.state === 'recording') {
           mediaRecorder.stop();
@@ -59,9 +71,17 @@ export const VideoWatermarkShare = {
     });
 
     // Stop recording when the button is released
-    this.recordButton.addEventListener('mouseup', () => {
+    this.recordButton.addEventListener('touchend', () => {
+      if (!mediaRecorder) {
+        console.error('MediaRecorder is not initialized. Please wait for setup.');
+        return;
+      }
+      // Clear timeout if the button is released before 1 second
+      clearTimeout(this.recordingTimeout);
       if (mediaRecorder.state === 'recording') {
         mediaRecorder.stop();
+      } else {
+        console.log('Recording was not started.')
       }
     });
 
@@ -118,7 +138,10 @@ export const VideoWatermarkShare = {
     shareCTA.addEventListener('click', processVideo);
 
     // Initialize recording setup
-    setupRecording();
+    this.el.sceneEl.addEventListener('camera-ready',  () => {
+      setupRecording()
+    })
+    
   },
 
   getCoordinates(position) {
