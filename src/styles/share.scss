@@ -1,0 +1,54 @@
+#sharingPreviewContainer {
+    display:none;
+    position:absolute;
+    flex-direction: column;
+    top: 12.5vh;
+    width: 100vw;
+    height: 75vh;
+    //justify-content: center;
+    align-items: center;
+    #sharingCloseBtn{
+      position:absolute;
+      top:1.5vh;
+      right:17.5vw;
+      border-radius: 50%;
+      text-align: center;
+      padding:0;
+      margin:0;
+      width:30px;
+      height:30px;
+      border:unset;
+  
+      font-size: 1.25em;
+      color:#000000;
+      background: #FFFFFF;
+    }
+  
+  
+  
+    #sharingPreviewBtns {
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5em;
+      font-size: 1.25em;
+      text-align: center;
+      margin: 2em 1em;
+    }
+  
+    #sharingDownloadBtn, #sharingShareBtn {
+      color: #FFFFFF;
+      background: #00AAE2;
+      border-radius: 38.8099px;
+      padding: 0.5em 1.75em;
+  
+  
+    }
+  
+    #sharingPreview {
+      max-width:70% !important;
+      max-height:100% !important;
+      border-radius: 10px;
+      border: 3px solid #FFFFFF;
+    }
+  }
